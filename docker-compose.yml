@@ -1,0 +1,15 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: schoolify-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: schoolify_user
+      POSTGRES_PASSWORD: schoolify!7
+      POSTGRES_DB: schoolify
+    ports:
+      - "15432:5432"   # <— use a free host port
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+volumes:
+  pgdata:
